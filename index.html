@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Our Bestie Memories 💖</title>
+
+<style>
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+body{
+    font-family:Arial, sans-serif;
+    background:linear-gradient(135deg,#ffd6e7,#d9c2ff,#c7f0ff);
+    min-height:100vh;
+    overflow-x:hidden;
+    color:#333;
+}
+
+.screen{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:25px;
+}
+
+.card{
+    width:100%;
+    max-width:700px;
+    background:rgba(255,255,255,.88);
+    border-radius:30px;
+    padding:30px 22px;
+    text-align:center;
+    box-shadow:0 15px 40px rgba(0,0,0,.18);
+    backdrop-filter:blur(10px);
+}
+
+h1{
+    color:#ff4081;
+    margin-bottom:15px;
+}
+
+h2{
+    color:#8e44ad;
+    margin:20px 0 10px;
+}
+
+p{
+    line-height:1.7;
+    margin:10px 0;
+}
+
+input{
+    width:100%;
+    max-width:350px;
+    padding:14px;
+    border:2px solid #ff9ec1;
+    border-radius:15px;
+    outline:none;
+    font-size:16px;
+    text-align:center;
+    margin:15px 0 8px;
+}
+
+button{
+    border:none;
+    padding:13px 25px;
+    border-radius:30px;
+    font-size:16px;
+    font-weight:bold;
+    cursor:pointer;
+    margin:8px;
+    transition:.3s;
+}
+
+button:hover{
+    transform:scale(1.08);
+}
+
+.unlock{
+    background:#ff4081;
+    color:white;
+}
+
+.music{
+    background:#8e44ad;
+    color:white;
+}
+
+.hint{
+    font-size:13px;
+    color:#777;
+    margin-top:8px;
+}
+
+.error{
+    color:#e53935;
+    font-weight:bold;
+    min-height:24px;
+}
+
+.hidden{
+    display:none !important;
+}
+
+.photos{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:15px;
+    margin:20px 0;
+}
+
+.photos img{
+    width:100%;
+    height:260px;
+    object-fit:cover;
+    border-radius:22px;
+    box-shadow:0 8px 20px rgba(0,0,0,.18);
+}
+
+.memory{
+    background:#fff4f8;
+    padding:18px;
+    border-radius:20px;
+    margin:15px 0;
+}
+
+.question{
+    margin-top:30px;
+    padding:25px 15px;
+    background:linear-gradient(135deg,#ffe0ec,#eee0ff);
+    border-radius:25px;
+}
+
+.yes{
+    background:#28c76f;
+    color:white;
+}
+
+.no{
+    background:#ff5c7a;
+    color:white;
+}
+
+.final{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:25px;
+}
+
+.final h1{
+    font-size:42px;
+}
+
+.final p{
+    font-size:20px;
+}
+
+.heart{
+    position:fixed;
+    top:-30px;
+    font-size:25px;
+    animation:fall linear forwards;
+    pointer-events:none;
+}
+
+@keyframes fall{
+    to{
+        transform:translateY(110vh) rotate(360deg);
+        opacity:0;
+    }
+}
+
+.confetti{
+    position:fixed;
+    width:10px;
+    height:10px;
+    top:-20px;
+    animation:confettiFall 3s linear forwards;
+    pointer-events:none;
+}
+
+@keyframes confettiFall{
+    to{
+        transform:translateY(110vh) rotate(720deg);
+        opacity:0;
+    }
+}
+
+.bounce{
+    animation:bounce 1.2s infinite;
+}
+
+@keyframes bounce{
+    0%,100%{transform:translateY(0)}
+    50%{transform:translateY(-12px)}
+}
+
+@media(max-width:600px){
+    .photos{
+        grid-template-columns:1fr;
+    }
+
+    .photos img{
+        height:300px;
+    }
+
+    .final h1{
+        font-size:32px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- PASSWORD PAGE -->
+<section id="passwordPage" class="screen">
+
+<div class="card">
+
+    <div class="bounce" style="font-size:60px;">🔐</div>
+
+    <h1>Our Secret Memories 💖</h1>
+
+    <p>
+        Kuch memories sirf special person ke liye hain...
+        <br>
+        Enter the secret password to continue 🔒
+    </p>
+
+    <input
+        type="password"
+        id="password"
+        placeholder="Enter Password"
+    >
+
+    <br>
+
+    <button class="unlock" onclick="checkPassword()">
+        Unlock 💗
+    </button>
+
+    <button class="music" onclick="toggleMusic()" id="musicBtn">
+        ▶ Play Music 🎵
+    </button>
+
+    <div class="hint">
+        💡 Hint: Password is hidden somewhere on this page.
+    </div>
+
+    <div id="error" class="error"></div>
+
+    <!-- Hidden password clue -->
+    <div style="position:absolute; left:-9999px;">
+        kutta
+    </div>
+
+</div>
+
+</section>
+
+
+<!-- MEMORY PAGE -->
+<section id="memoryPage" class="screen hidden">
+
+<div class="card">
+
+    <h1>Our Bestie Memories 💕</h1>
+
+    <p>
+        Some people come into our life as strangers,
+        but slowly become one of the most important parts
+        of our memories. 🥹💖
+    </p>
+
+    <div class="photos">
+
+        <img src="photo1.jpg" alt="Bestie Memory 1">
+
+        <img src="photo2.jpg" alt="Bestie Memory 2">
+
+    </div>
+
+    <div class="memory">
+        <h2>Harsh & Amulya 🫶</h2>
+
+        <p>
+            From random talks to endless laughs,
+            from silly fights to unforgettable memories,
+            every moment became special. ❤️
+        </p>
+    </div>
+
+    <div class="memory">
+
+        <h2>Those Little Memories ✨</h2>
+
+        <p>
+            Maybe we don't realize it while living those moments,
+            but later those small moments become the memories
+            we miss the most. 🥹
+        </p>
+
+    </div>
+
+    <div class="memory">
+
+        <h2>One Last Question... 💌</h2>
+
+        <p>
+            After everything we've shared,
+            <br>
+            <b>kya tum ye friendship continue karna chahti ho? 🥺❤️</b>
+        </p>
+
+        <button class="yes" onclick="sendAnswer('Yes 💓')">
+            YES 💖
+        </button>
+
+        <button class="no" onclick="sendAnswer('No 🤷')">
+            NO 🤷
+        </button>
+
+    </div>
+
+</div>
+
+</section>
+
+
+<!-- FINAL PAGE -->
+<section id="finalPage" class="final hidden">
+
+<div class="card" id="finalCard"></div>
+
+</section>
+
+
+<!-- Hidden Google Form submission -->
+<iframe name="googleFormFrame" style="display:none;"></iframe>
+
+
+<audio id="music" loop>
+    <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+
+<script>
+
+/* =========================================
+   PASSWORD
+   ========================================= */
+
+function checkPassword(){
+
+    const input =
+        document.getElementById("password").value
+        .trim()
+        .toLowerCase();
+
+    /*
+       Password is encoded instead of directly
+       written in the normal JavaScript.
+       
+       "kutta" → base64 = a3V0dGE=
+    */
+
+    const secret = atob("a3V0dGE=");
+
+    if(input === secret){
+
+        document.getElementById("passwordPage")
+            .classList.add("hidden");
+
+        document.getElementById("memoryPage")
+            .classList.remove("hidden");
+
+        startHearts();
+
+    }else{
+
+        document.getElementById("error").innerHTML =
+            "Wrong password 😜 Try again!";
+
+    }
+}
+
+
+/* =========================================
+   MUSIC
+   ========================================= */
+
+let musicPlaying = false;
+
+function toggleMusic(){
+
+    const music =
+        document.getElementById("music");
+
+    const btn =
+        document.getElementById("musicBtn");
+
+    if(!musicPlaying){
+
+        music.play().catch(()=>{});
+
+        musicPlaying = true;
+
+        btn.innerHTML = "⏸ Pause Music 🎵";
+
+    }else{
+
+        music.pause();
+
+        musicPlaying = false;
+
+        btn.innerHTML = "▶ Play Music 🎵";
+
+    }
+
+}
+
+
+/* =========================================
+   GOOGLE FORM
+   ========================================= */
+
+function sendAnswer(answer){
+
+    /*
+      Your Google Form response endpoint.
+      The form field ID is:
+      entry.1849120093
+    */
+
+    const form =
+        document.createElement("form");
+
+    form.method = "POST";
+
+    form.action =
+        "https://docs.google.com/forms/d/e/1FAIpQLSfSkpzU2vKjMkRH-A-sOfpv6nO0KAj2i7FvJmgYmhphWevqxQ/formResponse";
+
+    form.target = "googleFormFrame";
+
+    const input =
+        document.createElement("input");
+
+    input.type = "hidden";
+
+    input.name = "entry.1849120093";
+
+    input.value = answer;
+
+    form.appendChild(input);
+
+    document.body.appendChild(form);
+
+    form.submit();
+
+    form.remove();
+
+
+    /* Show final screen */
+
+    document.getElementById("memoryPage")
+        .classList.add("hidden");
+
+    document.getElementById("finalPage")
+        .classList.remove("hidden");
+
+
+    if(answer.startsWith("Yes")){
+
+        document.getElementById("finalCard").innerHTML = `
+            <div style="font-size:80px;">💖🥹💖</div>
+
+            <h1>BESTIE FOREVER! ♾️</h1>
+
+            <h2>Harsh & Amulya 🫶</h2>
+
+            <p>
+                No matter what happens,
+                some friendships are just too special
+                to let go. ❤️
+            </p>
+
+            <p>
+                Bestie forever & always! 🥹💗
+            </p>
+        `;
+
+        startConfetti();
+        startHearts();
+
+    }else{
+
+        document.getElementById("finalCard").innerHTML = `
+            <div style="font-size:80px;">🥺💔</div>
+
+            <h1>I Miss You Always 🥺</h1>
+
+            <p>
+                Some memories never really disappear...
+            </p>
+
+            <p>
+                No matter where life takes us,
+                I'll always remember our friendship. 🫂💔✨
+            </p>
+
+            <div style="font-size:45px;">
+                🥺💔🫂✨🌸
+            </div>
+        `;
+
+        startHearts();
+
+    }
+
+}
+
+
+/* =========================================
+   FALLING HEARTS
+   ========================================= */
+
+function startHearts(){
+
+    setInterval(()=>{
+
+        const heart =
+            document.createElement("div");
+
+        heart.className = "heart";
+
+        const emojis = [
+            "❤️","💖","💕","💗",
+            "💓","💞","🫶","✨"
+        ];
+
+        heart.innerHTML =
+            emojis[Math.floor(Math.random()*emojis.length)];
+
+        heart.style.left =
+            Math.random()*100 + "vw";
+
+        heart.style.animationDuration =
+            (3 + Math.random()*4) + "s";
+
+        document.body.appendChild(heart);
+
+        setTimeout(()=>{
+            heart.remove();
+        },7000);
+
+    },350);
+
+}
+
+
+/* =========================================
+   CONFETTI
+   ========================================= */
+
+function startConfetti(){
+
+    for(let i=0;i<100;i++){
+
+        const c =
+            document.createElement("div");
+
+        c.className = "confetti";
+
+        c.style.left =
+            Math.random()*100 + "vw";
+
+        c.style.animationDuration =
+            (2 + Math.random()*3) + "s";
+
+        c.style.background =
+            `hsl(${Math.random()*360},80%,60%)`;
+
+        c.style.transform =
+            `rotate(${Math.random()*360}deg)`;
+
+        document.body.appendChild(c);
+
+        setTimeout(()=>{
+            c.remove();
+        },5000);
+
+    }
+
+}
+
+</script>
+
+</body>
+  </html>
