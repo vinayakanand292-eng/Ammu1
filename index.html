@@ -32,7 +32,7 @@ body{
 .card{
     width:100%;
     max-width:700px;
-    background:rgba(255,255,255,.88);
+    background:rgba(255,255,255,.92);
     border-radius:30px;
     padding:30px 22px;
     text-align:center;
@@ -93,9 +93,22 @@ button:hover{
 }
 
 .hint{
-    font-size:13px;
+    font-size:14px;
     color:#777;
-    margin-top:8px;
+    margin-top:12px;
+}
+
+.puzzle{
+    background:#fff4f8;
+    padding:18px;
+    border-radius:20px;
+    margin:20px 0;
+    border:2px dashed #ff9ec1;
+}
+
+.clue{
+    font-size:17px;
+    margin:12px 0;
 }
 
 .error{
@@ -106,30 +119,6 @@ button:hover{
 
 .hidden{
     display:none !important;
-}
-
-/* PUZZLE */
-
-.puzzle{
-    background:linear-gradient(135deg,#fff0f7,#f0e8ff);
-    border:2px dashed #ff9ec1;
-    border-radius:22px;
-    padding:18px;
-    margin:20px 0;
-    text-align:left;
-}
-
-.puzzle h2{
-    text-align:center;
-    margin-top:0;
-}
-
-.clue{
-    background:white;
-    border-radius:14px;
-    padding:12px;
-    margin:9px 0;
-    line-height:1.5;
 }
 
 .photos{
@@ -194,6 +183,7 @@ button:hover{
     font-size:25px;
     animation:fall linear forwards;
     pointer-events:none;
+    z-index:9999;
 }
 
 @keyframes fall{
@@ -210,6 +200,7 @@ button:hover{
     top:-20px;
     animation:confettiFall 3s linear forwards;
     pointer-events:none;
+    z-index:9999;
 }
 
 @keyframes confettiFall{
@@ -225,11 +216,10 @@ button:hover{
 
 @keyframes bounce{
     0%,100%{
-        transform:translateY(0)
+        transform:translateY(0);
     }
-
     50%{
-        transform:translateY(-12px)
+        transform:translateY(-12px);
     }
 }
 
@@ -247,7 +237,6 @@ button:hover{
         font-size:32px;
     }
 }
-
 </style>
 </head>
 
@@ -272,11 +261,11 @@ button:hover{
     <p>
         Kuch memories sirf special person ke liye hain...
         <br>
-        Pehle ek chhota sa puzzle solve karo 🔎💗
+        Lekin pehle ek chhota sa puzzle solve karo 😜💗
     </p>
 
 
-    <!-- VISIBLE PUZZLE -->
+    <!-- PUZZLE -->
 
     <div class="puzzle">
 
@@ -285,24 +274,27 @@ button:hover{
         </h2>
 
         <div class="clue">
-            🧩 <b>Clue 1:</b><br>
-            Main ek animal hoon 🐾
+            🧩 Clue 1:
+            <br>
+            "Main ek animal hoon 🐾"
         </div>
 
         <div class="clue">
-            🧩 <b>Clue 2:</b><br>
-            Mera naam 5 letters ka hai.
+            🧩 Clue 2:
+            <br>
+            "Mera naam 5 letters ka hai."
         </div>
 
         <div class="clue">
-            🧩 <b>Clue 3:</b><br>
-            Mujhe Hindi mein <b>कुत्ता</b> kaha jata hai. 🐶
+            🧩 Clue 3:
+            <br>
+            "Mujhe Hindi mein aksar
+            <b>कुत्ता</b> kaha jata hai. 🐶"
         </div>
 
-        <div class="clue">
-            💡 <b>Final Hint:</b><br>
-            Iska English word password mein enter karo.
-        </div>
+        <p>
+            💡 Ab iska English word password mein likho.
+        </p>
 
     </div>
 
@@ -311,6 +303,7 @@ button:hover{
         type="password"
         id="password"
         placeholder="Enter Password"
+        autocomplete="off"
     >
 
     <br>
@@ -334,7 +327,8 @@ button:hover{
 
 
     <div class="hint">
-        💡 Password puzzle ke clues mein hidden hai 😉
+        💡 Password directly yahan nahi likha hai.
+        Puzzle solve karo 😉
     </div>
 
 
@@ -364,8 +358,8 @@ button:hover{
 
     <p>
         Some people come into our life as strangers,
-        but slowly become one of the most important parts
-        of our memories. 🥹💖
+        but slowly become one of the most important
+        parts of our memories. 🥹💖
     </p>
 
 
@@ -406,15 +400,15 @@ button:hover{
         </h2>
 
         <p>
-            Maybe we don't realize it while living those moments,
-            but later those small moments become the memories
-            we miss the most. 🥹
+            Maybe we don't realize it while living
+            those moments, but later those small moments
+            become the memories we miss the most. 🥹
         </p>
 
     </div>
 
 
-    <!-- ================= QUESTION ================= -->
+    <!-- QUESTION -->
 
     <div class="memory question">
 
@@ -473,8 +467,7 @@ button:hover{
 </section>
 
 
-
-<!-- GOOGLE FORM FRAME -->
+<!-- HIDDEN GOOGLE FORM FRAME -->
 
 <iframe
     name="googleFormFrame"
@@ -482,18 +475,17 @@ button:hover{
 </iframe>
 
 
-
 <!-- MUSIC -->
 
 <audio
     id="music"
     loop
+    preload="auto"
 >
 
     <source
         src="music.mp3"
-        type="audio/mpeg"
-    >
+        type="audio/mpeg">
 
 </audio>
 
@@ -502,9 +494,7 @@ button:hover{
 <script>
 
 
-/* =========================================
-   PASSWORD
-========================================= */
+/* ================= PASSWORD ================= */
 
 function checkPassword(){
 
@@ -517,7 +507,11 @@ function checkPassword(){
 
 
     /*
-       Password = kutta
+       Password:
+       kutta
+
+       It is kept inside JavaScript so it
+       doesn't appear visibly on the page.
     */
 
     const secret = "kutta";
@@ -554,9 +548,7 @@ function checkPassword(){
 
 
 
-/* =========================================
-   ENTER KEY
-========================================= */
+/* ENTER KEY */
 
 document
 .getElementById("password")
@@ -573,9 +565,7 @@ document
 
 
 
-/* =========================================
-   MUSIC
-========================================= */
+/* ================= MUSIC ================= */
 
 let musicPlaying = false;
 
@@ -605,7 +595,7 @@ function toggleMusic(){
 
             alert(
                 "Music play nahi ho rahi 😅\n\n" +
-                "Check karo ki music.mp3 " +
+                "Check karo ki music.mp3 file " +
                 "index.html ke same folder mein hai."
             );
 
@@ -628,17 +618,9 @@ function toggleMusic(){
 
 
 
-/* =========================================
-   GOOGLE FORM
-   SAME WORKING LOGIC
-========================================= */
+/* ================= GOOGLE FORM ================= */
 
 function sendAnswer(answer){
-
-    /*
-       Your original working Google Form
-       response endpoint.
-    */
 
     const form =
         document.createElement("form");
@@ -659,13 +641,9 @@ function sendAnswer(answer){
         document.createElement("input");
 
 
-    input.type = "hidden";
+    input.type =
+        "hidden";
 
-
-    /*
-       Same entry ID as your original
-       working code.
-    */
 
     input.name =
         "entry.1849120093";
@@ -687,7 +665,7 @@ function sendAnswer(answer){
     form.remove();
 
 
-    /* ================= FINAL SCREEN ================= */
+    /* FINAL SCREEN */
 
     document
     .getElementById("memoryPage")
@@ -701,7 +679,7 @@ function sendAnswer(answer){
     .remove("hidden");
 
 
-    /* ================= YES ================= */
+    /* YES */
 
     if(answer.startsWith("Yes")){
 
@@ -737,14 +715,13 @@ function sendAnswer(answer){
 
         `;
 
-
         startConfetti();
         startHearts();
 
     }
 
 
-    /* ================= NO ================= */
+    /* NO */
 
     else{
 
@@ -776,7 +753,6 @@ function sendAnswer(answer){
 
         `;
 
-
         startHearts();
 
     }
@@ -785,9 +761,7 @@ function sendAnswer(answer){
 
 
 
-/* =========================================
-   FALLING HEARTS
-========================================= */
+/* ================= HEARTS ================= */
 
 let heartsStarted = false;
 
@@ -797,7 +771,6 @@ function startHearts(){
     if(heartsStarted){
         return;
     }
-
 
     heartsStarted = true;
 
@@ -813,7 +786,6 @@ function startHearts(){
 
 
         const emojis = [
-
             "❤️",
             "💖",
             "💕",
@@ -822,14 +794,14 @@ function startHearts(){
             "💞",
             "🫶",
             "✨"
-
         ];
 
 
         heart.innerHTML =
             emojis[
                 Math.floor(
-                    Math.random()*emojis.length
+                    Math.random() *
+                    emojis.length
                 )
             ];
 
@@ -846,9 +818,7 @@ function startHearts(){
 
 
         setTimeout(function(){
-
             heart.remove();
-
         },7000);
 
 
@@ -858,9 +828,7 @@ function startHearts(){
 
 
 
-/* =========================================
-   CONFETTI
-========================================= */
+/* ================= CONFETTI ================= */
 
 function startConfetti(){
 
@@ -900,9 +868,7 @@ function startConfetti(){
 
 
         setTimeout(function(){
-
             c.remove();
-
         },5000);
 
     }
