@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Our Bestie Memories 💖</title>
 
 <style>
+
 *{
     box-sizing:border-box;
     margin:0;
@@ -13,8 +16,13 @@
 }
 
 body{
-    font-family:Arial, sans-serif;
-    background:linear-gradient(135deg,#ffd6e7,#d9c2ff,#c7f0ff);
+    font-family:Arial,sans-serif;
+    background:linear-gradient(
+        135deg,
+        #ffd6e7,
+        #d9c2ff,
+        #c7f0ff
+    );
     min-height:100vh;
     overflow-x:hidden;
     color:#333;
@@ -31,7 +39,7 @@ body{
 .card{
     width:100%;
     max-width:700px;
-    background:rgba(255,255,255,.88);
+    background:rgba(255,255,255,.9);
     border-radius:30px;
     padding:30px 22px;
     text-align:center;
@@ -101,6 +109,7 @@ button:hover{
     color:#e53935;
     font-weight:bold;
     min-height:24px;
+    margin-top:8px;
 }
 
 .hidden{
@@ -132,7 +141,11 @@ button:hover{
 .question{
     margin-top:30px;
     padding:25px 15px;
-    background:linear-gradient(135deg,#ffe0ec,#eee0ff);
+    background:linear-gradient(
+        135deg,
+        #ffe0ec,
+        #eee0ff
+    );
     border-radius:25px;
 }
 
@@ -169,11 +182,14 @@ button:hover{
     font-size:25px;
     animation:fall linear forwards;
     pointer-events:none;
+    z-index:9999;
 }
 
 @keyframes fall{
     to{
-        transform:translateY(110vh) rotate(360deg);
+        transform:
+            translateY(110vh)
+            rotate(360deg);
         opacity:0;
     }
 }
@@ -185,11 +201,14 @@ button:hover{
     top:-20px;
     animation:confettiFall 3s linear forwards;
     pointer-events:none;
+    z-index:9999;
 }
 
 @keyframes confettiFall{
     to{
-        transform:translateY(110vh) rotate(720deg);
+        transform:
+            translateY(110vh)
+            rotate(720deg);
         opacity:0;
     }
 }
@@ -199,11 +218,19 @@ button:hover{
 }
 
 @keyframes bounce{
-    0%,100%{transform:translateY(0)}
-    50%{transform:translateY(-12px)}
+
+    0%,100%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-12px);
+    }
+
 }
 
 @media(max-width:600px){
+
     .photos{
         grid-template-columns:1fr;
     }
@@ -215,20 +242,32 @@ button:hover{
     .final h1{
         font-size:32px;
     }
+
 }
+
 </style>
+
 </head>
+
 
 <body>
 
-<!-- PASSWORD PAGE -->
+
+<!-- ==================================================
+     PASSWORD PAGE
+================================================== -->
+
 <section id="passwordPage" class="screen">
 
 <div class="card">
 
-    <div class="bounce" style="font-size:60px;">🔐</div>
+    <div class="bounce" style="font-size:60px;">
+        🔐
+    </div>
 
-    <h1>Our Secret Memories 💖</h1>
+    <h1>
+        Our Secret Memories 💖
+    </h1>
 
     <p>
         Kuch memories sirf special person ke liye hain...
@@ -236,96 +275,171 @@ button:hover{
         Enter the secret password to continue 🔒
     </p>
 
+
     <input
         type="password"
         id="password"
         placeholder="Enter Password"
+        autocomplete="off"
     >
+
 
     <br>
 
-    <button class="unlock" onclick="checkPassword()">
+
+    <button
+        class="unlock"
+        onclick="checkPassword()"
+    >
         Unlock 💗
     </button>
 
-    <button class="music" onclick="toggleMusic()" id="musicBtn">
+
+    <button
+        class="music"
+        onclick="toggleMusic()"
+        id="musicBtn"
+    >
         ▶ Play Music 🎵
     </button>
+
 
     <div class="hint">
         💡 Hint: Password is hidden somewhere on this page.
     </div>
 
-    <div id="error" class="error"></div>
 
-    <!-- Hidden password clue -->
-    <div style="position:absolute; left:-9999px;">
+    <div
+        id="error"
+        class="error">
+    </div>
+
+
+    <!-- ==================================================
+         HIDDEN PASSWORD
+
+         Password = kutta
+
+         It is hidden from normal view.
+         Someone can find it by checking the page source.
+    ================================================== -->
+
+    <div
+        id="secretPassword"
+        data-password="kutta"
+        style="display:none;"
+    >
         kutta
     </div>
+
 
 </div>
 
 </section>
 
 
-<!-- MEMORY PAGE -->
-<section id="memoryPage" class="screen hidden">
+
+<!-- ==================================================
+     MEMORY PAGE
+================================================== -->
+
+<section
+    id="memoryPage"
+    class="screen hidden"
+>
 
 <div class="card">
 
-    <h1>Our Bestie Memories 💕</h1>
+    <h1>
+        Our Bestie Memories 💕
+    </h1>
+
 
     <p>
         Some people come into our life as strangers,
-        but slowly become one of the most important parts
-        of our memories. 🥹💖
+        but slowly become one of the most important
+        parts of our memories. 🥹💖
     </p>
+
 
     <div class="photos">
 
-        <img src="photo1.jpg" alt="Bestie Memory 1">
+        <img
+            src="photo1.jpg"
+            alt="Bestie Memory 1"
+        >
 
-        <img src="photo2.jpg" alt="Bestie Memory 2">
+        <img
+            src="photo2.jpg"
+            alt="Bestie Memory 2"
+        >
 
     </div>
 
+
     <div class="memory">
-        <h2>Harsh & Amulya 🫶</h2>
+
+        <h2>
+            Harsh & Amulya 🫶
+        </h2>
 
         <p>
             From random talks to endless laughs,
             from silly fights to unforgettable memories,
             every moment became special. ❤️
         </p>
+
     </div>
+
 
     <div class="memory">
 
-        <h2>Those Little Memories ✨</h2>
+        <h2>
+            Those Little Memories ✨
+        </h2>
 
         <p>
-            Maybe we don't realize it while living those moments,
-            but later those small moments become the memories
-            we miss the most. 🥹
+            Maybe we don't realize it while living
+            those moments, but later those small moments
+            become the memories we miss the most. 🥹
         </p>
 
     </div>
 
-    <div class="memory">
 
-        <h2>One Last Question... 💌</h2>
+    <!-- QUESTION -->
+
+    <div class="memory question">
+
+        <h2>
+            One Last Question... 💌
+        </h2>
 
         <p>
+
             After everything we've shared,
-            <br>
-            <b>kya tum ye friendship continue karna chahti ho? 🥺❤️</b>
+
+            <br><br>
+
+            <b>
+                Kya tum ye friendship continue karna chahti ho? 🥺❤️
+            </b>
+
         </p>
 
-        <button class="yes" onclick="sendAnswer('Yes 💓')">
+
+        <button
+            class="yes"
+            onclick="sendAnswer('Yes 💓')"
+        >
             YES 💖
         </button>
 
-        <button class="no" onclick="sendAnswer('No 🤷')">
+
+        <button
+            class="no"
+            onclick="sendAnswer('No 🤷')"
+        >
             NO 🤷
         </button>
 
@@ -336,156 +450,299 @@ button:hover{
 </section>
 
 
-<!-- FINAL PAGE -->
-<section id="finalPage" class="final hidden">
 
-<div class="card" id="finalCard"></div>
+<!-- ==================================================
+     FINAL PAGE
+================================================== -->
+
+<section
+    id="finalPage"
+    class="final hidden"
+>
+
+<div
+    class="card"
+    id="finalCard"
+>
+</div>
 
 </section>
 
 
-<!-- Hidden Google Form submission -->
-<iframe name="googleFormFrame" style="display:none;"></iframe>
+
+<!-- ==================================================
+     HIDDEN GOOGLE FORM FRAME
+================================================== -->
+
+<iframe
+    name="googleFormFrame"
+    style="display:none;"
+>
+</iframe>
 
 
-<audio id="music" loop>
-    <source src="music.mp3" type="audio/mpeg">
+
+<!-- ==================================================
+     MUSIC
+
+     IMPORTANT:
+     Apni actual music file ka naam yahan likho.
+     Example:
+     bestie.mp3
+================================================== -->
+
+<audio
+    id="music"
+    loop
+    preload="auto"
+>
+
+    <source
+        src="music.mp3"
+        type="audio/mpeg"
+    >
+
 </audio>
+
 
 
 <script>
 
-/* =========================================
+
+/* ==================================================
    PASSWORD
-   ========================================= */
+================================================== */
 
 function checkPassword(){
 
     const input =
-        document.getElementById("password").value
+        document
+        .getElementById("password")
+        .value
         .trim()
         .toLowerCase();
 
+
     /*
-       Password is encoded instead of directly
-       written in the normal JavaScript.
-       
-       "kutta" → base64 = a3V0dGE=
+       Password hidden HTML element se read hoga.
+       Normal page par visible nahi hai.
     */
 
-    const secret = atob("a3V0dGE=");
+    const secret =
+        document
+        .getElementById("secretPassword")
+        .dataset
+        .password;
+
 
     if(input === secret){
 
-        document.getElementById("passwordPage")
-            .classList.add("hidden");
+        document
+        .getElementById("passwordPage")
+        .classList
+        .add("hidden");
 
-        document.getElementById("memoryPage")
-            .classList.remove("hidden");
+
+        document
+        .getElementById("memoryPage")
+        .classList
+        .remove("hidden");
+
 
         startHearts();
 
-    }else{
+    }
 
-        document.getElementById("error").innerHTML =
-            "Wrong password 😜 Try again!";
+    else{
+
+        document
+        .getElementById("error")
+        .innerHTML =
+        "Wrong password 😜 Try again!";
 
     }
+
 }
 
 
-/* =========================================
+
+/* ==================================================
+   ENTER KEY PASSWORD
+================================================== */
+
+document
+.getElementById("password")
+.addEventListener(
+    "keydown",
+    function(event){
+
+        if(event.key === "Enter"){
+
+            checkPassword();
+
+        }
+
+    }
+);
+
+
+
+/* ==================================================
    MUSIC
-   ========================================= */
+================================================== */
 
 let musicPlaying = false;
+
 
 function toggleMusic(){
 
     const music =
-        document.getElementById("music");
+        document
+        .getElementById("music");
+
 
     const btn =
-        document.getElementById("musicBtn");
+        document
+        .getElementById("musicBtn");
+
 
     if(!musicPlaying){
 
-        music.play().catch(()=>{});
+        music
+        .play()
+        .then(()=>{
 
-        musicPlaying = true;
+            musicPlaying = true;
 
-        btn.innerHTML = "⏸ Pause Music 🎵";
+            btn.innerHTML =
+                "⏸ Pause Music 🎵";
 
-    }else{
+        })
+        .catch(()=>{
+
+            alert(
+                "Music file nahi mil rahi 😅\n\n" +
+                "Check karo ki music.mp3 GitHub repository " +
+                "mein upload hai aur filename exactly same hai."
+            );
+
+        });
+
+    }
+
+    else{
 
         music.pause();
 
         musicPlaying = false;
 
-        btn.innerHTML = "▶ Play Music 🎵";
+        btn.innerHTML =
+            "▶ Play Music 🎵";
 
     }
 
 }
 
 
-/* =========================================
-   GOOGLE FORM
-   ========================================= */
+
+/* ==================================================
+   GOOGLE FORM RESPONSE
+================================================== */
 
 function sendAnswer(answer){
 
     /*
-      Your Google Form response endpoint.
-      The form field ID is:
-      entry.1849120093
+       Google Form response URL
     */
 
     const form =
         document.createElement("form");
 
-    form.method = "POST";
+
+    form.method =
+        "POST";
+
 
     form.action =
         "https://docs.google.com/forms/d/e/1FAIpQLSfSkpzU2vKjMkRH-A-sOfpv6nO0KAj2i7FvJmgYmhphWevqxQ/formResponse";
 
-    form.target = "googleFormFrame";
+
+    form.target =
+        "googleFormFrame";
+
+
+    /*
+       Google Form question:
+       "Kya tum ye friendship continue karna chahti ho?"
+    */
 
     const input =
         document.createElement("input");
 
-    input.type = "hidden";
 
-    input.name = "entry.1849120093";
+    input.type =
+        "hidden";
 
-    input.value = answer;
+
+    input.name =
+        "entry.1849120093";
+
+
+    input.value =
+        answer;
+
 
     form.appendChild(input);
 
+
     document.body.appendChild(form);
 
+
     form.submit();
+
 
     form.remove();
 
 
-    /* Show final screen */
 
-    document.getElementById("memoryPage")
-        .classList.add("hidden");
+    /* ==================================================
+       FINAL SCREEN
+    ================================================== */
 
-    document.getElementById("finalPage")
-        .classList.remove("hidden");
+    document
+    .getElementById("memoryPage")
+    .classList
+    .add("hidden");
 
+
+    document
+    .getElementById("finalPage")
+    .classList
+    .remove("hidden");
+
+
+
+    /* ==================================================
+       YES
+    ================================================== */
 
     if(answer.startsWith("Yes")){
 
-        document.getElementById("finalCard").innerHTML = `
-            <div style="font-size:80px;">💖🥹💖</div>
+        document
+        .getElementById("finalCard")
+        .innerHTML = `
 
-            <h1>BESTIE FOREVER! ♾️</h1>
+            <div style="font-size:80px;">
+                💖🥹💖
+            </div>
 
-            <h2>Harsh & Amulya 🫶</h2>
+            <h1>
+                Harsh & Amulya
+            </h1>
+
+            <h2>
+                BESTIE FOREVER! ♾️
+            </h2>
 
             <p>
                 No matter what happens,
@@ -496,17 +753,39 @@ function sendAnswer(answer){
             <p>
                 Bestie forever & always! 🥹💗
             </p>
+
+            <div style="font-size:45px;">
+                🫶💖✨🌸💞
+            </div>
+
         `;
 
+
         startConfetti();
+
         startHearts();
 
-    }else{
+    }
 
-        document.getElementById("finalCard").innerHTML = `
-            <div style="font-size:80px;">🥺💔</div>
 
-            <h1>I Miss You Always 🥺</h1>
+
+    /* ==================================================
+       NO
+    ================================================== */
+
+    else{
+
+        document
+        .getElementById("finalCard")
+        .innerHTML = `
+
+            <div style="font-size:80px;">
+                🥺💔
+            </div>
+
+            <h1>
+                I Miss You Always 🥺
+            </h1>
 
             <p>
                 Some memories never really disappear...
@@ -514,13 +793,16 @@ function sendAnswer(answer){
 
             <p>
                 No matter where life takes us,
-                I'll always remember our friendship. 🫂💔✨
+                I'll always remember our friendship.
+                🫂💔✨
             </p>
 
             <div style="font-size:45px;">
                 🥺💔🫂✨🌸
             </div>
+
         `;
+
 
         startHearts();
 
@@ -529,73 +811,133 @@ function sendAnswer(answer){
 }
 
 
-/* =========================================
+
+/* ==================================================
    FALLING HEARTS
-   ========================================= */
+================================================== */
+
+let heartsStarted = false;
+
 
 function startHearts(){
+
+    /*
+       Prevent multiple intervals
+    */
+
+    if(heartsStarted){
+        return;
+    }
+
+    heartsStarted = true;
+
 
     setInterval(()=>{
 
         const heart =
             document.createElement("div");
 
-        heart.className = "heart";
+
+        heart.className =
+            "heart";
+
 
         const emojis = [
-            "❤️","💖","💕","💗",
-            "💓","💞","🫶","✨"
+
+            "❤️",
+            "💖",
+            "💕",
+            "💗",
+            "💓",
+            "💞",
+            "🫶",
+            "✨"
+
         ];
 
+
         heart.innerHTML =
-            emojis[Math.floor(Math.random()*emojis.length)];
+            emojis[
+                Math.floor(
+                    Math.random() *
+                    emojis.length
+                )
+            ];
+
 
         heart.style.left =
-            Math.random()*100 + "vw";
+            Math.random() * 100 + "vw";
+
 
         heart.style.animationDuration =
-            (3 + Math.random()*4) + "s";
+            (3 + Math.random() * 4) + "s";
+
 
         document.body.appendChild(heart);
 
+
         setTimeout(()=>{
+
             heart.remove();
+
         },7000);
+
 
     },350);
 
 }
 
 
-/* =========================================
+
+/* ==================================================
    CONFETTI
-   ========================================= */
+================================================== */
 
 function startConfetti(){
 
-    for(let i=0;i<100;i++){
+    for(
+        let i = 0;
+        i < 100;
+        i++
+    ){
 
         const c =
             document.createElement("div");
 
-        c.className = "confetti";
+
+        c.className =
+            "confetti";
+
 
         c.style.left =
-            Math.random()*100 + "vw";
+            Math.random() * 100 + "vw";
+
 
         c.style.animationDuration =
-            (2 + Math.random()*3) + "s";
+            (2 + Math.random() * 3) + "s";
+
 
         c.style.background =
-            `hsl(${Math.random()*360},80%,60%)`;
+            `hsl(
+                ${Math.random()*360},
+                80%,
+                60%
+            )`;
+
 
         c.style.transform =
-            `rotate(${Math.random()*360}deg)`;
+            `rotate(
+                ${Math.random()*360}deg
+            )`;
+
 
         document.body.appendChild(c);
 
+
         setTimeout(()=>{
+
             c.remove();
+
         },5000);
 
     }
@@ -605,4 +947,4 @@ function startConfetti(){
 </script>
 
 </body>
-  </html>
+</html>
